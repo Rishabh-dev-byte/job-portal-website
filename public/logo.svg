@@ -1,0 +1,9 @@
+<svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="60" cy="60" r="12" fill="white"/>
+  <path d="M60 25C40.67 25 25 40.67 25 60C25 79.33 40.67 95 60 95C79.33 95 95 79.33 95 60" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <path d="M85 35L95 25L105 35" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <text x="120" y="75" font-family="Arial, sans-serif" font-weight="bold" font-size="52" fill="white">
+    get<tspan fill="#E0E0E0">Hired</tspan>
+  </text>
+</svg>
