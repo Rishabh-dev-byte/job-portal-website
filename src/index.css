@@ -1,10 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-
-/* Subtle grid background – shadcn compatible */
-
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
