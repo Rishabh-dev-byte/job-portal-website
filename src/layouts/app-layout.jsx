@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 const AppLayout = () => {
   return (
     <div>
-      <div className="grid-background"></div>
+      <div className="grid-background justify-center align-center p-30"></div>
       <main className="min-h-screen container">
         <Header />
         <Outlet />

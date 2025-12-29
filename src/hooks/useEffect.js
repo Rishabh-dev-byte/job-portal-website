@@ -1,7 +1,7 @@
 import {useSession} from "@clerk/clerk-react"
 import {useState}  from "react"
 
- function UseEffect(cb,{options={}}){
+ function UseEffect(cb,options={}){
     const[loading,setLoading] = useState(true)
     const[data,setData] = useState(null)
     const[error,setError] = useState(null)
