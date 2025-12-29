@@ -1,5 +1,5 @@
-import { Heart, MapPinIcon, Trash2Icon } from "lucide-react";
-
+import { Heart, MapIcon, MapPinIcon, Trash2Icon } from "lucide-react";
+import {Button} from "./ui/button"
 import {
   Card,
   CardContent,
@@ -9,9 +9,9 @@ import {
 } from "./ui/card";
 import { Link } from "react-router-dom";
 
+
 import { useUser } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
-
 
 
 const JobCard = ({
@@ -20,26 +20,44 @@ const JobCard = ({
     onJobAction = () => {},
     isMyJob = false,
 }) => {
-     const[saved,toSave] = useState(savedInit)
-     const {user} = useUser
+     console.log("Job prop:", job);
+
+     const {user} = useUser()
   return (
-    <card>
-        <CardHeader>
-            <CardTitle>
-                {job.title}
-                 {isMyJob && (
-                 <Trash2Icon
+
+    <Card>
+         <CardHeader>
+         <CardTitle>
+        {job?.title || "No title"}
+         {isMyJob && (
+            <Trash2Icon
               fill="red"
               size={18}
               className="text-red-300 cursor-pointer"
               onClick={handleDeleteJob}
-              />)}
-            </CardTitle>
-        </CardHeader>
-        <CardContent>
+            />
+          )}
+         </CardTitle>
+         </CardHeader>
+
+         <CardContent>
+            <div>
+                {job && <img src={job.company.logo_url}className="h-6"/>}
+            </div>
+            <div className="flex gap-1 py-2">
+                <MapPinIcon size={17} /> {job.location}
+            </div>
+            {job.description}
+         </CardContent>
+         <CardFooter>
+            <Link to={`/job/${job.id}`}></Link>
+            <Button variant="secondary">
+                More Details
+            </Button>
+         </CardFooter>
         
-        </CardContent>
-    </card>
+    </Card>
+    
   )
 }
 

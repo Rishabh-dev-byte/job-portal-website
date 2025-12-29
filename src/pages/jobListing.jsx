@@ -1,5 +1,5 @@
 import React from 'react'
-import UseEffect from "../hooks/useEffect"
+import UseFetch from "../hooks/useEffect"
 import {getJobs} from "../api/apiJobs"
 import {useEffect,useState} from "react"
 import {useUser} from "@clerk/clerk-react"
@@ -17,7 +17,7 @@ const JobListing = () => {
     loading: loadingJobs,
     data: jobs,
     fn: fnJobs,
-     } = UseEffect(getJobs, {
+     } = UseFetch(getJobs, {
     location,
     company_id,
     searchQuery,
@@ -33,22 +33,24 @@ const JobListing = () => {
   if(!isLoaded){
     return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />;
   }
+  
  
   return (
     <div>
       <h1 className='font-extrabold flex justify-center text-center text-6xl sm:text-7xl p-10'  >
         Latest Jobs 
+      
       </h1>
     
+    
      {loadingJobs === false && (
-        <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
           {jobs?.length ? (
             jobs.map((job) => (
             
                 <JobCard
                   key={job.id}
                   job={job}
-                  savedInit={job?.saved?.length > 0}
                 />
               
             ))

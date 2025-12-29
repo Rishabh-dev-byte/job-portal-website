@@ -1,7 +1,7 @@
 import {useSession} from "@clerk/clerk-react"
 import {useState}  from "react"
 
- function UseEffect(cb,options={}){
+ function UseFetch(cb,options={}){
     const[loading,setLoading] = useState(true)
     const[data,setData] = useState(null)
     const[error,setError] = useState(null)
@@ -16,7 +16,7 @@ import {useState}  from "react"
         let token = await session.getToken({
         template: "supabase",
       })
-        const response = cb(token,options,...args) 
+        const response =  await cb(token,options,...args) 
         setData(response)
         setError(null)
     } 
@@ -28,6 +28,6 @@ import {useState}  from "react"
       }
       
     }
-     return {data,fn,loading ,error}
-}
- export default UseEffect
+     return {data,fn,loading ,error};
+};
+ export default UseFetch;

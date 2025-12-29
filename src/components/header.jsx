@@ -49,16 +49,17 @@ const Header = () => {
           <SignedIn>
             {user?.unsafeMetadata?.role === "recruiter" && (
               <Link to="/post-job">
-                <Button variant="destructive" className="rounded-full">
+                <Button variant="destructive" className="rounded-full ">
                   <PenBox size={20} className="mr-2" />
                   Post a Job
                 </Button>
               </Link>
             )}
-            <UserButton
+            <UserButton 
               appearance={{
                 elements: {
-                  avatarBox: "w-10 h-10",
+                  avatarBox: "w-10 h-10 ",
+                  
                 },
               }}
             >
