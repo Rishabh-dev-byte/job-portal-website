@@ -10,7 +10,10 @@ const AppLayout = () => {
       <main >
        <Outlet />
       </main>
-      <Footer/>
+      <div className="mt-80">
+        <Footer/>
+        </div>
+      
     </div>
   );
 };
