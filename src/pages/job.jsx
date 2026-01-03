@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useUser } from '@clerk/clerk-react';
+import MDEditor from "@uiw/react-md-editor";
 import UseFetch from "../hooks/useEffect.js"
 import { getSinglejobs } from '@/api/apiJobs';
 import { useEffect } from 'react';
@@ -35,7 +36,7 @@ const JobPage = () => {
   });
 
   const handleStatusChange = (value) =>{
-    const isOpen =(value === "open" )
+    const isOpen = value === "open" 
     fnstatus(isOpen).then(()=>{
       fnJobs()
     }
@@ -63,7 +64,8 @@ const JobPage = () => {
       </>):( <><DoorClosed /> close</>)}
       </div>
        </div> 
-        {job?.recruiter_id === user?.id && (
+         
+         {job?.recruiter_id === user?.id && (
         <Select onValueChange={handleStatusChange}>
           <SelectTrigger
             className={`w-full ${job?.isOpen ? "bg-green-950" : "bg-red-950"}`}
@@ -80,7 +82,30 @@ const JobPage = () => {
           </SelectContent>
         </Select>
       )}
+    
+      
+      <h2 className="text-1xl sm:text-xl font-bold pt-3 pl-5">About the job</h2>
+      <p className="sm:text-lg pt-3 pl-5">{job?.description}</p>
+
+      <h2 className="text-2xl sm:text-3xl font-bold pl-5 pt-3 pb-3">
+        What we are looking for
+      </h2>
+     <MDEditor.Markdown
+     source={job?.requirements}
+     style={{ backgroundColor: "transparent" }}
+     className="sm:text-lg pl-5"
+     />
+    {job?.recruiter_id !== user?.id && (
+        <ApplyJobDrawer
+          job={job}
+          user={user}
+          fetchJob={fnJobs}
+          applied={job?.applications?.find((ap) => ap.candidate_id === user.id)}
+        />
+      )}
+      
     </div>
+    
   )
 }
 
