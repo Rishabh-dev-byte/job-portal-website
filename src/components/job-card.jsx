@@ -65,10 +65,12 @@ const JobCard = ({
             {job.description}
          </CardContent>
          <CardFooter className="flex gap-2 justify-center">
-            <Link to={`/job/${job.id}`}></Link>
+            <Link to={`/job/${job.id}`}> 
             <Button variant="secondary" className="w-80">
                 More Details
-            </Button>
+                {console.log("the job id is",job.id)}
+            </Button></Link>
+           
             {!isMyJob && <Button
              variant="outline"
              className="w-10 "
